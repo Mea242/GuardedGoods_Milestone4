@@ -1,0 +1,78 @@
+@page
+@model GuardedGoods_Milestone4.Pages.usersPages.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Users[0].full_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Users[0].email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Users[0].username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Users[0].validationID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Users[0].password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Users[0].status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Users[0].created_at)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Users[0].last_login)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Users) {
+        <tr>
+            <td>
+                @Html.DisplayFor(model => item.full_name)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.email)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.username)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.validationID)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.password)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.status)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.created_at)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.last_login)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.userID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.userID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.userID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,69 @@
+@page
+@model GuardedGoods_Milestone4.Pages.usersPages.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>users</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Users.full_name" class="control-label"></label>
+                <input asp-for="Users.full_name" class="form-control" />
+                <span asp-validation-for="Users.full_name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Users.email" class="control-label"></label>
+                <input asp-for="Users.email" class="form-control" />
+                <span asp-validation-for="Users.email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Users.username" class="control-label"></label>
+                <input asp-for="Users.username" class="form-control" />
+                <span asp-validation-for="Users.username" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Users.validationID" class="control-label"></label>
+                <input asp-for="Users.validationID" class="form-control" />
+                <span asp-validation-for="Users.validationID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Users.password" class="control-label"></label>
+                <input asp-for="Users.password" class="form-control" />
+                <span asp-validation-for="Users.password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Users.status" class="control-label"></label>
+                <input asp-for="Users.status" class="form-check-input" />
+                <span asp-validation-for="Users.status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Users.created_at" class="control-label"></label>
+                <input asp-for="Users.created_at" class="form-control" />
+                <span asp-validation-for="Users.created_at" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Users.last_login" class="control-label"></label>
+                <input asp-for="Users.last_login" class="form-control" />
+                <span asp-validation-for="Users.last_login" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
