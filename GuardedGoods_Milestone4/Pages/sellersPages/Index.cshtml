@@ -1,0 +1,48 @@
+@page
+@model GuardedGoods_Milestone4.Pages.sellersPages.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Sellers[0].user_ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sellers[0].average_rating)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sellers[0].verification_status)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Sellers) {
+        <tr>
+            <td>
+                @Html.DisplayFor(model => item.user_ID)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.average_rating)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.verification_status)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.seller_ID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.seller_ID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.seller_ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
