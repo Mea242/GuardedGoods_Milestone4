@@ -1,0 +1,49 @@
+@page
+@model GuardedGoods_Milestone4.Pages.cartPages.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>cart</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Cart.user_ID" class="control-label"></label>
+                <input asp-for="Cart.user_ID" class="form-control" />
+                <span asp-validation-for="Cart.user_ID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cart.product_ID" class="control-label"></label>
+                <input asp-for="Cart.product_ID" class="form-control" />
+                <span asp-validation-for="Cart.product_ID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cart.quantity" class="control-label"></label>
+                <input asp-for="Cart.quantity" class="form-control" />
+                <span asp-validation-for="Cart.quantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cart.cart_total" class="control-label"></label>
+                <input asp-for="Cart.cart_total" class="form-control" />
+                <span asp-validation-for="Cart.cart_total" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
