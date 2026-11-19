@@ -18,6 +18,8 @@ public class IndexModel : PageModel
 
     public async Task OnGetAsync()
     {
-        Sellers = await _context.sellers.ToListAsync();
+        Sellers = await _context.sellers
+            .Where(s => s.is_active)
+            .ToListAsync();
     }
 }

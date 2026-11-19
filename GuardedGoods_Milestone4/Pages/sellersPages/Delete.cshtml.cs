@@ -45,12 +45,13 @@ public class DeleteModel : PageModel
         }
 
         var sellers = await _context.sellers.FindAsync(Sellers.seller_ID);
-        if (sellers != null)
+        if (sellers is null)
         {
-            Sellers = sellers;
-            _context.sellers.Remove(Sellers);
-            await _context.SaveChangesAsync();
+            return NotFound();
         }
+
+        sellers.is_active = false;
+        await _context.SaveChangesAsync();
 
         return RedirectToPage("./Index");
     }
