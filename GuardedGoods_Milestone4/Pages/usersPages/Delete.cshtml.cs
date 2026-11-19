@@ -17,14 +17,14 @@ public class DeleteModel : PageModel
     [BindProperty]
     public users Users { get; set; } = default!;
 
-    public async Task<IActionResult> OnGetAsync(string? userid)
+    public async Task<IActionResult> OnGetAsync(string? id)
     {
-        if (userid is null)
+        if (id is null)
         {
             return NotFound();
         }
 
-        var users = await _context.users.FirstOrDefaultAsync(m => m.userID == userid);
+        var users = await _context.users.FirstOrDefaultAsync(m => m.userID == id);
         if (users is null)
         {
             return NotFound();
@@ -37,14 +37,14 @@ public class DeleteModel : PageModel
         return Page();
     }
 
-    public async Task<IActionResult> OnPostAsync(string? userid)
+    public async Task<IActionResult> OnPostAsync()
     {
-        if (userid is null)
+        if (Users is null || string.IsNullOrWhiteSpace(Users.userID))
         {
             return NotFound();
         }
 
-        var users = await _context.users.FindAsync(userid);
+        var users = await _context.users.FindAsync(Users.userID);
         if (users != null)
         {
             Users = users;

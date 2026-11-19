@@ -15,14 +15,14 @@ public class DetailsModel : PageModel
 
     public cart Cart { get; set; } = default!;
 
-    public async Task<IActionResult> OnGetAsync(string? cart_id)
+    public async Task<IActionResult> OnGetAsync(string? id)
     {
-        if (cart_id is null)
+        if (id is null)
         {
             return NotFound();
         }
 
-        var cart = await _context.cart.FirstOrDefaultAsync(m => m.cart_ID == cart_id);
+        var cart = await _context.cart.FirstOrDefaultAsync(m => m.cart_ID == id);
         if (cart is null)
         {
             return NotFound();

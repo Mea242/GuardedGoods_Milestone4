@@ -15,14 +15,14 @@ public class DetailsModel : PageModel
 
     public sellers Sellers { get; set; } = default!;
 
-    public async Task<IActionResult> OnGetAsync(string? seller_id)
+    public async Task<IActionResult> OnGetAsync(string? id)
     {
-        if (seller_id is null)
+        if (id is null)
         {
             return NotFound();
         }
 
-        var sellers = await _context.sellers.FirstOrDefaultAsync(m => m.seller_ID == seller_id);
+        var sellers = await _context.sellers.FirstOrDefaultAsync(m => m.seller_ID == id);
         if (sellers is null)
         {
             return NotFound();

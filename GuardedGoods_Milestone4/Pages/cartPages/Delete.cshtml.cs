@@ -17,14 +17,14 @@ public class DeleteModel : PageModel
     [BindProperty]
     public cart Cart { get; set; } = default!;
 
-    public async Task<IActionResult> OnGetAsync(string? cart_id)
+    public async Task<IActionResult> OnGetAsync(string? id)
     {
-        if (cart_id is null)
+        if (id is null)
         {
             return NotFound();
         }
 
-        var cart = await _context.cart.FirstOrDefaultAsync(m => m.cart_ID == cart_id);
+        var cart = await _context.cart.FirstOrDefaultAsync(m => m.cart_ID == id);
         if (cart is null)
         {
             return NotFound();
@@ -37,14 +37,14 @@ public class DeleteModel : PageModel
         return Page();
     }
 
-    public async Task<IActionResult> OnPostAsync(string? cart_id)
+    public async Task<IActionResult> OnPostAsync()
     {
-        if (cart_id is null)
+        if (Cart is null || string.IsNullOrWhiteSpace(Cart.cart_ID))
         {
             return NotFound();
         }
 
-        var cart = await _context.cart.FindAsync(cart_id);
+        var cart = await _context.cart.FindAsync(Cart.cart_ID);
         if (cart != null)
         {
             Cart = cart;

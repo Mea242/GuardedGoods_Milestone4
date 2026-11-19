@@ -17,14 +17,14 @@ public class EditModel : PageModel
     [BindProperty]
     public users Users { get; set; } = default!;
 
-    public async Task<IActionResult> OnGetAsync(string? userid)
+    public async Task<IActionResult> OnGetAsync(string? id)
     {
-        if (userid is null)
+        if (id is null)
         {
             return NotFound();
         }
 
-        var users = await _context.users.FirstOrDefaultAsync(m => m.userID == userid);
+        var users = await _context.users.FirstOrDefaultAsync(m => m.userID == id);
         if (users is null)
         {
             return NotFound();

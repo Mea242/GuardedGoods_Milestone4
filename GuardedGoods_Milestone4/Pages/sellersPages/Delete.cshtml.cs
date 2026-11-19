@@ -17,14 +17,14 @@ public class DeleteModel : PageModel
     [BindProperty]
     public sellers Sellers { get; set; } = default!;
 
-    public async Task<IActionResult> OnGetAsync(string? seller_id)
+    public async Task<IActionResult> OnGetAsync(string? id)
     {
-        if (seller_id is null)
+        if (id is null)
         {
             return NotFound();
         }
 
-        var sellers = await _context.sellers.FirstOrDefaultAsync(m => m.seller_ID == seller_id);
+        var sellers = await _context.sellers.FirstOrDefaultAsync(m => m.seller_ID == id);
         if (sellers is null)
         {
             return NotFound();
@@ -37,14 +37,14 @@ public class DeleteModel : PageModel
         return Page();
     }
 
-    public async Task<IActionResult> OnPostAsync(string? seller_id)
+    public async Task<IActionResult> OnPostAsync()
     {
-        if (seller_id is null)
+        if (Sellers is null || string.IsNullOrWhiteSpace(Sellers.seller_ID))
         {
             return NotFound();
         }
 
-        var sellers = await _context.sellers.FindAsync(seller_id);
+        var sellers = await _context.sellers.FindAsync(Sellers.seller_ID);
         if (sellers != null)
         {
             Sellers = sellers;
