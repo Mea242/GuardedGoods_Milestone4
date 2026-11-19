@@ -18,6 +18,8 @@ public class IndexModel : PageModel
 
     public async Task OnGetAsync()
     {
-        Cart = await _context.cart.ToListAsync();
+        Cart = await _context.cart
+            .Where(c => c.is_active)
+            .ToListAsync();
     }
 }

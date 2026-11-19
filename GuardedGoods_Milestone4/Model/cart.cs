@@ -8,8 +8,10 @@ namespace GuardedGoods_Milestone4.Model
         public string product_ID { get; set; } = string.Empty;
 
         [Key]
+        [Required]
         public string cart_ID { get; set; } = string.Empty;
 
+        public bool is_active { get; set; } = true;
         public int? quantity { get; set; }
         public decimal? cart_total { get; set; }
     }

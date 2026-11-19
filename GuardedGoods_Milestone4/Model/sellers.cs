@@ -5,6 +5,7 @@ namespace GuardedGoods_Milestone4.Model
     public class sellers
     {
         [Key]
+        [Required]
         public string seller_ID { get; set; } = string.Empty;
         public string user_ID { get; set; } = string.Empty;
         public bool is_active { get; set; } = true;

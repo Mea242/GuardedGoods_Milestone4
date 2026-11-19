@@ -14,6 +14,7 @@
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Cart.cart_ID" />
+            <input type="hidden" asp-for="Cart.is_active" />
             <div class="form-group">
                 <label asp-for="Cart.user_ID" class="control-label"></label>
                 <input asp-for="Cart.user_ID" class="form-control" />

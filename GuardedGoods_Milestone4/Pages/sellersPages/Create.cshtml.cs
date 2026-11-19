@@ -30,6 +30,12 @@ public class CreateModel : PageModel
             return Page();
         }
 
+        if (await _context.sellers.AnyAsync(s => s.seller_ID == Sellers.seller_ID))
+        {
+            ModelState.AddModelError("Sellers.seller_ID", "This seller ID already exists.");
+            return Page();
+        }
+
         _context.sellers.Add(Sellers);
         await _context.SaveChangesAsync();
 

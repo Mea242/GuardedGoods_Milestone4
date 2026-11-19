@@ -47,8 +47,7 @@ public class DeleteModel : PageModel
         var cart = await _context.cart.FindAsync(Cart.cart_ID);
         if (cart != null)
         {
-            Cart = cart;
-            _context.cart.Remove(Cart);
+            cart.is_active = false;
             await _context.SaveChangesAsync();
         }
 
