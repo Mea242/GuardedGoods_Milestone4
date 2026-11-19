@@ -1,0 +1,46 @@
+@page
+@model GuardedGoods_Milestone4.Pages.RatingsModel
+
+@{
+	ViewData["Title"] = "Ratings";
+}
+
+<h1>Ratings</h1>
+
+<ul class="nav nav-tabs" id="ratingsTabs" role="tablist">
+	<li class="nav-item" role="presentation">
+		<button class="nav-link active" id="ratings-tab" data-bs-toggle="tab" data-bs-target="#ratings-pane" type="button" role="tab" aria-controls="ratings-pane" aria-selected="true">
+			Ratings
+		</button>
+	</li>
+</ul>
+
+<div class="tab-content border border-top-0 p-3" id="ratingsTabContent">
+	<div class="tab-pane fade show active" id="ratings-pane" role="tabpanel" aria-labelledby="ratings-tab" tabindex="0">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Ratings UID</th>
+					<th>Ratings SID</th>
+					<th>Comments</th>
+					<th>Timestamps</th>
+					<th>Date</th>
+					<th>Scale</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var rating in Model.Ratings)
+				{
+					<tr>
+						<td>@rating.RatingsUserId</td>
+						<td>@rating.RatingsSellerId</td>
+						<td>@rating.Comments</td>
+						<td>@rating.Timestamps</td>
+						<td>@rating.Date</td>
+						<td>@rating.Scale</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+	</div>
+</div>
